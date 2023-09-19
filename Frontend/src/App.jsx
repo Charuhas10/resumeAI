@@ -5,7 +5,7 @@ import ResumeUpload from "./ResumeUpload";
 function App() {
   return (
     <div>
-      <h1>Resume Upload App</h1>
+      <h1>ResumeAI</h1>
       <ResumeUpload />
       <Footer />
     </div>
