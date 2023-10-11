@@ -5,7 +5,7 @@ import ResumeUpload from "./ResumeUpload";
 function App() {
   return (
     <div>
-      <h1>ResumeAI</h1>
+      <h1 style={{ textAlign: "center" }}>ResumeAI</h1>
       <ResumeUpload />
       <Footer />
     </div>
