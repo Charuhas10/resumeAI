@@ -1,7 +1,10 @@
+import styles from "./ResumeUpload.module.css";
+
 function ResumeUpload() {
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     handleSubmit(file);
+    fetchData();
   };
 
   const handleDragOver = (event) => {
@@ -26,10 +29,6 @@ function ResumeUpload() {
     }
   };
 
-  const openFileDialog = () => {
-    document.getElementById("fileInput").click();
-  };
-
   // Inside a React component or hook
   const fetchData = async () => {
     try {
@@ -43,10 +42,10 @@ function ResumeUpload() {
 
   const parseData = async (file) => {
     const formData = new FormData();
-    formData.append("pdf", file);
-
+    formData.append("file", file);
     try {
-      const fileData = await fetch("http://localhost:5000/pdf", {
+      console.log("Sending file to the server...");
+      const fileData = await fetch("http://localhost:5000/upload", {
         method: "POST",
         body: formData,
       });
@@ -56,40 +55,31 @@ function ResumeUpload() {
       }
 
       const data = await fileData.json();
-      console.log(data.text);
+      console.log("Response from the server: ", data);
     } catch (error) {
       console.error("There was an error fetching the data:", error);
     }
   };
 
-  const handleDivClick = () => {
-    openFileDialog();
-    fetchData();
-    // parseData();
-  };
-
   return (
-    <div style={styles.page}>
-      <div
-        onClick={handleDivClick}
-        onDragOver={handleDragOver}
-        onDrop={handleDrop}
-        style={styles.uploadBox}
-      >
-        <input
-          type="file"
-          id="fileInput"
-          onChange={handleFileChange}
-          style={{ display: "none" }}
-          accept=".pdf"
-        />
-        <p style={styles.uploadText}>Click to Upload or Drag and Drop</p>
-      </div>
+    <div style={stylesOld.page}>
+      <form onDragOver={handleDragOver} onDrop={handleDrop}>
+        <label className={styles.UploadBox}>
+          <input
+            type="file"
+            onChange={handleFileChange}
+            accept=".pdf"
+            name="file"
+            className={styles.Picker}
+          />
+          Click to Upload or Drag and Drop
+        </label>
+      </form>
     </div>
   );
 }
 
-const styles = {
+const stylesOld = {
   page: {
     display: "flex",
     justifyContent: "center",
