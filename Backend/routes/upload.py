@@ -15,9 +15,8 @@ API_HEADERS = {"Authorization": f"Bearer {API_TOKEN}"}
 conversation_id = ""
 document_id = []
 
-print(conversation_id)
-print(document_id)
-
+# print(conversation_id)
+# print(document_id)
 
 # Function to create conversation and add files
 def create_conversation_and_add_files(files: Dict[Text, bytes]) -> requests.Response:

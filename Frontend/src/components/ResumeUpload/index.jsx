@@ -1,6 +1,10 @@
 import styles from "./index.module.css";
+import Loader from "../Loader/";
+import { useState } from "react";
 
 function ResumeUpload() {
+  const [loading, setLoading] = useState(false);
+
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     handleSubmit(file);
@@ -41,6 +45,7 @@ function ResumeUpload() {
   };
 
   const parseData = async (file) => {
+    setLoading(true); // Start loading
     const formData = new FormData();
     formData.append("file", file);
     try {
@@ -58,22 +63,30 @@ function ResumeUpload() {
       console.log("Response from the server: ", data);
     } catch (error) {
       console.error("There was an error fetching the data:", error);
+    } finally {
+      setLoading(false); // Stop loading
     }
   };
 
   return (
-    <form onDragOver={handleDragOver} onDrop={handleDrop}>
-      <label className={styles.UploadBox}>
-        <input
-          type="file"
-          onChange={handleFileChange}
-          accept=".pdf"
-          name="file"
-          className={styles.Picker}
-        />
-        Click to Upload or Drag and Drop
-      </label>
-    </form>
+    <div>
+      {loading ? (
+        <Loader />
+      ) : (
+        <form onDragOver={handleDragOver} onDrop={handleDrop}>
+          <label className={styles.UploadBox}>
+            <input
+              type="file"
+              onChange={handleFileChange}
+              accept=".pdf"
+              name="file"
+              className={styles.Picker}
+            />
+            Click to Upload or Drag and Drop
+          </label>
+        </form>
+      )}
+    </div>
   );
 }
 
