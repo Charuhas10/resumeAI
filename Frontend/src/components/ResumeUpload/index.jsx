@@ -1,4 +1,4 @@
-import styles from "./ResumeUpload.module.css";
+import styles from "./index.module.css";
 
 function ResumeUpload() {
   const handleFileChange = (event) => {
@@ -62,44 +62,19 @@ function ResumeUpload() {
   };
 
   return (
-    <div style={stylesOld.page}>
-      <form onDragOver={handleDragOver} onDrop={handleDrop}>
-        <label className={styles.UploadBox}>
-          <input
-            type="file"
-            onChange={handleFileChange}
-            accept=".pdf"
-            name="file"
-            className={styles.Picker}
-          />
-          Click to Upload or Drag and Drop
-        </label>
-      </form>
-    </div>
+    <form onDragOver={handleDragOver} onDrop={handleDrop}>
+      <label className={styles.UploadBox}>
+        <input
+          type="file"
+          onChange={handleFileChange}
+          accept=".pdf"
+          name="file"
+          className={styles.Picker}
+        />
+        Click to Upload or Drag and Drop
+      </label>
+    </form>
   );
 }
-
-const stylesOld = {
-  page: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    height: "100vh",
-    backgroundColor: "#f4f4f4", // Simple background color
-    fontFamily: '"Roboto", sans-serif',
-  },
-  uploadBox: {
-    border: "2px dashed #000",
-    padding: "30px", // Increased padding for a bigger box
-    width: "400px", // Increased width
-    textAlign: "center",
-    cursor: "pointer",
-    boxShadow: "0px 8px 15px rgba(0, 0, 0, 0.1)",
-  },
-  uploadText: {
-    margin: 0,
-    fontSize: "18px", // Slightly increased font size for clarity
-  },
-};
 
 export default ResumeUpload;

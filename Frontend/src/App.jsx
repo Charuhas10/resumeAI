@@ -1,12 +1,13 @@
 // import React from "react";
-import Footer from "./Footer";
-import ResumeUpload from "./ResumeUpload";
+
+import Footer from "./components/Footer";
+import HomePage from "./pages/Home";
 
 function App() {
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>ResumeAI</h1>
-      <ResumeUpload />
+      <HomePage />
       <Footer />
     </div>
   );

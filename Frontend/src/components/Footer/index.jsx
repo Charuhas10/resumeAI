@@ -1,17 +1,8 @@
-function Footer() {
-  const footerStyle = {
-    width: "100%",
-    backgroundColor: "#282c34",
-    color: "white",
-    textAlign: "center",
-    padding: "10px",
-    position: "fixed",
-    bottom: "0",
-    left: "0",
-  };
+import styles from "./index.module.css";
 
+function Footer() {
   return (
-    <footer style={footerStyle}>
+    <footer className={styles.Footer}>
       <p>&copy; 2023 ResumeAI</p>
       <p>
         <a

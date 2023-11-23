@@ -1,6 +1,11 @@
 {
   "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter"
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.indentSize": 4
   },
+  "prettier.tabWidth": 2,
+  "prettier.useTabs": false,
+  "editor.formatOnSave": true,
+  "editor.indentSize": 2,
   "python.formatting.provider": "none"
 }
