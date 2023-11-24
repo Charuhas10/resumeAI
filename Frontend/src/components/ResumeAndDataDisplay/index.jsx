@@ -1,7 +1,10 @@
-function ResumeAndDataDisplay() {
+function ResumeAndDataDisplay({ data }) {
   return (
-    <div>hello world</div>
-  )
+    <div>
+      <div>Hello World</div>
+      <div>Received Data: {JSON.stringify(data)}</div>
+    </div>
+  );
 }
 
-export default ResumeAndDataDisplay
+export default ResumeAndDataDisplay;

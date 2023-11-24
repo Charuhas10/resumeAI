@@ -1,9 +1,12 @@
 import styles from "./index.module.css";
 import Loader from "../Loader/";
-import { useState } from "react";
 
-function ResumeUpload() {
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+function ResumeUpload({ onDataReceived }) {
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -58,9 +61,10 @@ function ResumeUpload() {
       if (!fileData.ok) {
         throw new Error(`Server responded with ${fileData.status}`);
       }
-
       const data = await fileData.json();
       console.log("Response from the server: ", data);
+      onDataReceived(data);
+      navigate("/display-data");
     } catch (error) {
       console.error("There was an error fetching the data:", error);
     } finally {

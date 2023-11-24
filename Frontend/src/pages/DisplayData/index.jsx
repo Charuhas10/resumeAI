@@ -1,9 +1,9 @@
 import ResumeAndDataDisplay from "../../components/ResumeAndDataDisplay";
 
-export default function DisplayData() {
+export default function DisplayData({ data }) {
   return (
     <div>
-      <ResumeAndDataDisplay />
+      <ResumeAndDataDisplay data={data} />
     </div>
   );
 }
