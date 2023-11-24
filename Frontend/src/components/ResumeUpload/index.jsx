@@ -63,6 +63,7 @@ function ResumeUpload({ onDataReceived }) {
       }
       const data = await fileData.json();
       console.log("Response from the server: ", data);
+      sessionStorage.setItem("resumeData", JSON.stringify(data));
       onDataReceived(data);
       navigate("/display-data");
     } catch (error) {

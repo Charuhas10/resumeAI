@@ -1,5 +1,5 @@
 // import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 
 import Footer from "./components/Footer";
@@ -7,7 +7,13 @@ import HomePage from "./pages/Home";
 import DisplayData from "./pages/DisplayData";
 
 function App() {
-  const [resumeData, setResumeData] = useState(null);
+  const [resumeData, setResumeData] = useState(
+    JSON.parse(sessionStorage.getItem("resumeData")) || null
+  );
+
+  useEffect(() => {
+    sessionStorage.setItem("resumeData", JSON.stringify(resumeData));
+  }, [resumeData]);
 
   return (
     <BrowserRouter>
