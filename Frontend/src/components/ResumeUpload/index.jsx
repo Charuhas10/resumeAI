@@ -63,7 +63,7 @@ function ResumeUpload({ onDataReceived }) {
       console.log("Response from the server: ", data);
       sessionStorage.setItem("resumeData", JSON.stringify(data));
       onDataReceived(data);
-      navigate("/display-data");
+      navigate("/display-data-resume");
     } catch (error) {
       console.error("There was an error fetching the data:", error);
     } finally {

@@ -1,7 +1,9 @@
-export default function CoverLetter() {
+import CoverLetterUpload from "../../components/CoverLetterUpload";
+
+export default function CoverLetter({ DataReceived }) {
   return (
     <div>
-      Hello World
+      <CoverLetterUpload DataReceived={DataReceived} />
     </div>
   );
 }

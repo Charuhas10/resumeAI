@@ -4,8 +4,9 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 
 import Footer from "./components/Footer";
 import HomePage from "./pages/Home";
-import DisplayData from "./pages/DisplayData";
-import CoverLetterUpload from "./components/CoverLetterUpload";
+import DisplayDataResume from "./pages/DisplayDataResume";
+import DisplayDataCV from "./pages/DisplayDataCV";
+import CoverLetter from "./pages/CoverLetter";
 
 function App() {
   const [resumeData, setResumeData] = useState(
@@ -15,6 +16,14 @@ function App() {
   useEffect(() => {
     sessionStorage.setItem("resumeData", JSON.stringify(resumeData));
   }, [resumeData]);
+
+  const [CVData, setCVData] = useState(
+    JSON.parse(sessionStorage.getItem("CVData")) || null
+  );
+
+  useEffect(() => {
+    sessionStorage.setItem("CVData", JSON.stringify(CVData));
+  }, [CVData]);
 
   return (
     <BrowserRouter>
@@ -26,10 +35,17 @@ function App() {
             element={<HomePage onDataReceived={setResumeData} />}
           />
           <Route
-            path="/display-data"
-            element={<DisplayData data={resumeData} />}
+            path="/display-data-resume"
+            element={<DisplayDataResume data={resumeData} />}
           />
-          <Route path="/cover-letter" element={<CoverLetterUpload />} />
+          <Route
+            path="/cv"
+            element={<CoverLetter DataReceived={setCVData} />}
+          />
+          <Route
+            path="/display-data-cv"
+            element={<DisplayDataCV data={CVData} />}
+          />
         </Routes>
         <Footer />
       </div>

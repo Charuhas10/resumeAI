@@ -2,13 +2,13 @@ import styles from "./index.module.css";
 import Loader from "../Loader/";
 
 import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function CoverLetterUpload({ DataReceived }) {
   const [loading, setLoading] = useState(false);
   const [file, setFile] = useState(null);
   const [text, setText] = useState("");
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
@@ -67,7 +67,7 @@ function CoverLetterUpload({ DataReceived }) {
       console.log("Response from the server: ", data);
       sessionStorage.setItem("resumeData", JSON.stringify(data));
       DataReceived(data);
-      // navigate("/display-data");
+      navigate("/display-data-cv");
     } catch (error) {
       console.error("There was an error fetching the data:", error);
     } finally {
