@@ -7,6 +7,8 @@ import HomePage from "./pages/Home";
 import DisplayDataResume from "./pages/DisplayDataResume";
 import DisplayDataCV from "./pages/DisplayDataCV";
 import CoverLetter from "./pages/CoverLetter";
+import ATSChecker from "./components/ATSChecker";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   const [resumeData, setResumeData] = useState(
@@ -28,7 +30,8 @@ function App() {
   return (
     <BrowserRouter>
       <div>
-        <h1 style={{ textAlign: "center" }}>ResumeAI</h1>
+        {/* <h1 style={{ textAlign: "center" }}>ResumeAI</h1> */}
+        <Navbar />
         <Routes>
           <Route
             path="/"
@@ -46,8 +49,9 @@ function App() {
             path="/display-data-cv"
             element={<DisplayDataCV data={CVData} />}
           />
+          <Route path="/ats-checker" element={<ATSChecker />} />
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </BrowserRouter>
   );
