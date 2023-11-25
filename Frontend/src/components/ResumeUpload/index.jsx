@@ -4,7 +4,7 @@ import Loader from "../Loader/";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function ResumeUpload({ onDataReceived }) {
+function ResumeUpload({ onDataReceived }) { 
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -30,13 +30,11 @@ function ResumeUpload({ onDataReceived }) {
     if (file) {
       console.log("File selected: ", file.name);
       parseData(file);
-      // Later here we will make an API call to the backend
     } else {
       console.log("No file selected");
     }
   };
 
-  // Inside a React component or hook
   const fetchData = async () => {
     try {
       const response = await fetch("http://localhost:5000/");

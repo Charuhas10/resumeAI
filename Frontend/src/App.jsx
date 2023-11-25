@@ -5,6 +5,7 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Footer from "./components/Footer";
 import HomePage from "./pages/Home";
 import DisplayData from "./pages/DisplayData";
+import CoverLetterUpload from "./components/CoverLetterUpload";
 
 function App() {
   const [resumeData, setResumeData] = useState(
@@ -28,6 +29,7 @@ function App() {
             path="/display-data"
             element={<DisplayData data={resumeData} />}
           />
+          <Route path="/cover-letter" element={<CoverLetterUpload />} />
         </Routes>
         <Footer />
       </div>
