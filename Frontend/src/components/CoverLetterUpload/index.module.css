@@ -1,3 +1,6 @@
+body {
+  background-color: #fff5e0;
+}
 .UploadBox {
   border: 2px dashed #000;
   padding: 30px;
@@ -5,6 +8,20 @@
   text-align: center;
   cursor: pointer;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+h1 {
+  color: aqua;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+p {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0 10rem;
 }
 
 .Picker {

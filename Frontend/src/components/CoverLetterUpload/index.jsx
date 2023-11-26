@@ -1,5 +1,8 @@
 import styles from "./index.module.css";
 import Loader from "../Loader/";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Button from "react-bootstrap/Button";
+// Use <Button> in your component
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -76,7 +79,14 @@ function CoverLetterUpload({ DataReceived }) {
   };
 
   return (
-    <div>
+    <div className="container">
+      <h1>Cover Letter Generator</h1>
+      <p>Writing a cover letter has never been so easy.</p>
+      <p>
+        With the ResumeHub cover letter tool, you don't have to worry about the
+        hard and confusing parts of writing a cover letter. Now, you can quickly
+        make a great cover letter and get the job you dream of!
+      </p>
       {loading ? (
         <Loader />
       ) : (
@@ -101,7 +111,7 @@ function CoverLetterUpload({ DataReceived }) {
             type="button"
             onClick={() => handleSubmit(file, text)}
             disabled={!file || text.trim() === ""} // Button is disabled unless both file and text are present
-            className={styles.SubmitButton}
+            className={`btn btn-primary ${styles.SubmitButton}`}
           >
             Submit
           </button>

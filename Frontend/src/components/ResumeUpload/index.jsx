@@ -4,7 +4,7 @@ import Loader from "../Loader/";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function ResumeUpload({ onDataReceived }) { 
+function ResumeUpload({ onDataReceived }) {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
