@@ -1,6 +1,7 @@
 import styles from "./index.module.css";
 import Loader from "../Loader/";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Row, Col } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 // Use <Button> in your component
 
@@ -91,30 +92,83 @@ function CoverLetterUpload({ DataReceived }) {
         <Loader />
       ) : (
         <form onDragOver={handleDragOver} onDrop={handleDrop}>
-          <label className={styles.UploadBox}>
-            <input
-              type="file"
-              onChange={handleFileChange}
-              accept=".pdf"
-              name="file"
-              className={styles.Picker}
-            />
-            Click to Upload or Drag and Drop
-          </label>
-          <textarea
-            className={styles.TextArea}
-            placeholder="Enter your text here"
-            value={text} // The text state variable
-            onChange={handleTextChange} // Function to update the text state
-          />
-          <button
-            type="button"
-            onClick={() => handleSubmit(file, text)}
-            disabled={!file || text.trim() === ""} // Button is disabled unless both file and text are present
-            className={`btn btn-primary ${styles.SubmitButton}`}
-          >
-            Submit
-          </button>
+          <Row>
+            <Col
+              md={6}
+              className="d-flex justify-content-center align-items-center"
+            >
+              <label className={styles.UploadBox}>
+                <input
+                  type="file"
+                  onChange={handleFileChange}
+                  accept=".pdf"
+                  name="file"
+                  className={styles.Picker}
+                />
+                <div className={styles.uploadboxel}>
+                  <div>
+                    <svg
+                      width="32px"
+                      height="32px"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                      <g
+                        id="SVGRepo_tracerCarrier"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      ></g>
+                      <g id="SVGRepo_iconCarrier">
+                        {" "}
+                        <path
+                          d="M15 21H9C6.17157 21 4.75736 21 3.87868 20.1213C3 19.2426 3 17.8284 3 15M21 15C21 17.8284 21 19.2426 20.1213 20.1213C19.8215 20.4211 19.4594 20.6186 19 20.7487"
+                          stroke="#000000"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        ></path>{" "}
+                        <path
+                          d="M12 16V3M12 3L16 7.375M12 3L8 7.375"
+                          stroke="#000000"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        ></path>{" "}
+                      </g>
+                    </svg>
+                  </div>
+
+                  <p>Click to Upload or Drag and Drop</p>
+                </div>
+              </label>
+            </Col>
+            <Col
+              md={6}
+              className="d-flex justify-content-center align-items-center"
+            >
+              <textarea
+                className={styles.TextArea}
+                placeholder="Enter Job Description"
+                value={text} // The text state variable
+                onChange={handleTextChange} // Function to update the text state
+              />
+            </Col>
+          </Row>
+          {/* <div className={styles.formContainer}> */}
+          {/* </div> */}
+
+          <div className="d-flex justify-content-center">
+            <button
+              type="button"
+              onClick={() => handleSubmit(file, text)}
+              disabled={!file || text.trim() === ""}
+              className={`btn btn-primary ${styles.SubmitButton}`}
+            >
+              Submit
+            </button>
+          </div>
         </form>
       )}
     </div>
