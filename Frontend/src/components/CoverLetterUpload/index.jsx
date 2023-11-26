@@ -2,13 +2,13 @@ import styles from "./index.module.css";
 import Loader from "../Loader/";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Row, Col } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
+// import Button from "react-bootstrap/Button";
 // Use <Button> in your component
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function CoverLetterUpload({ DataReceived }) {
+function CoverLetterUpload({DataReceived}) {
   const [loading, setLoading] = useState(false);
   const [file, setFile] = useState(null);
   const [text, setText] = useState("");
@@ -84,7 +84,7 @@ function CoverLetterUpload({ DataReceived }) {
       <h1>Cover Letter Generator</h1>
       <p>Writing a cover letter has never been so easy.</p>
       <p>
-        With the ResumeHub cover letter tool, you don't have to worry about the
+        With the ResumeHub cover letter tool, you dont have to worry about the
         hard and confusing parts of writing a cover letter. Now, you can quickly
         make a great cover letter and get the job you dream of!
       </p>

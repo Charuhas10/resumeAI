@@ -1,0 +1,62 @@
+body {
+  background-color: #fff5e0;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  color: aqua;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+p {
+  display: block;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+svg {
+  margin: 10px;
+}
+textarea {
+  width: 400px;
+  min-height: 350px;
+  max-height: 350px;
+  border: none;
+  border-radius: 5px;
+  padding: 1rem;
+}
+.UploadBox {
+  border: 1px dashed #a8a8a8;
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 30px;
+  width: 275px;
+  height: 350px;
+  text-align: center;
+  cursor: pointer;
+  display: flex; /* Enable flex container */
+  justify-content: center; /* Horizontally center content */
+  align-items: center; /* Vertically center content */
+  flex-direction: column;
+}
+
+.uploadboxel {
+  display: flex; /* Enable flex container */
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Align items to the center */
+  justify-content: center; /* Justify content to the center */
+}
+
+/* .formContainer {
+  display: flex;
+  justify-content: center;
+} */
+.Picker {
+  display: none;
+}
+
+.Picker::-webkit-file-upload-button {
+  visibility: hidden;
+}
