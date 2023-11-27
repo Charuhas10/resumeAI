@@ -82,7 +82,9 @@ function CoverLetterUpload({ DataReceived }) {
   return (
     <div className="container">
       <h1>Cover Letter Generator</h1>
-      <p>Writing a cover letter has never been so easy.</p>
+      <p className={styles.lineOne}>
+        Writing a cover letter has never been so easy.
+      </p>
       <p>
         With the ResumeHub cover letter tool, you dont have to worry about the
         hard and confusing parts of writing a cover letter. Now, you can quickly

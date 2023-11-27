@@ -43,6 +43,7 @@ function ATSChecker(ATSDataReceived) {
       console.log("File selected: ", selectedFile.name);
       console.log("Text entered: ", enteredText);
       try {
+        console.log("1. reached here");
         await parseData(selectedFile, enteredText);
       } catch (error) {
         console.error("Error in handleSubmit:", error);
@@ -59,17 +60,18 @@ function ATSChecker(ATSDataReceived) {
     formData.append("text", JD);
     try {
       console.log("Sending file to the server...");
-      const fileData = await fetch("http://localhost:5000/uploadCV", {
+      const fileData = await fetch("http://localhost:5000/uploadATS", {
         method: "POST",
         body: formData,
       });
 
       if (!fileData.ok) {
+        console.log("2. i came till here");
         throw new Error(`Server responded with ${fileData.status}`);
       }
       const data = await fileData.json();
-      console.log("Response from the server: ", data);
-      sessionStorage.setItem("resumeData", JSON.stringify(data));
+      console.log("SimilarityScore ", data);
+      // sessionStorage.setItem("resumeData", JSON.stringify(data));
       ATSDataReceived(data);
       navigate("/display-data-ats");
     } catch (error) {
