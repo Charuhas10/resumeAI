@@ -46,8 +46,7 @@ def init_app(app):
             return jsonify({"error": err}), 500
 
         # Ask a question
-        # Replace 'YOUR_QUERY' and 'DOCUMENT_ID' with actual logic to determine them
-        query = "Give the Name of the user"
+        query = "Process the provided resume PDF file and extract the following details in a structured JSON format: Candidate Overview: Summarize the candidate's profile, highlighting career aspirations or professional summary. Key Details: Include sections for Name, Email, Phone Number, Education (with dates and institutions), Experience (with job titles, companies, and duration), Skills (categorized if applicable), Projects (brief descriptions and roles played), Honors and Awards (with dates and awarding bodies).10 Important Questions: Based on the resume content, generate 10 insightful questions that would be relevant for an interview or further assessment of the candidate. These questions should pertain to the candidate's experience, skills, and accomplishments, aiming to elicit detailed responses about their professional journey and competencies."
         document_id.append(response_json.get("documents")[0].get("id"))
         print(f"Conversation id : {conversation_id}")
         print(f"Document id: {document_id}")

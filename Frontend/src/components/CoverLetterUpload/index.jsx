@@ -69,7 +69,7 @@ function CoverLetterUpload({ DataReceived }) {
       }
       const data = await fileData.json();
       console.log("Response from the server: ", data);
-      sessionStorage.setItem("resumeData", JSON.stringify(data));
+      sessionStorage.setItem("CVData", JSON.stringify(data));
       DataReceived(data);
       navigate("/display-data-cv");
     } catch (error) {

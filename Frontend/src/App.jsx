@@ -3,11 +3,14 @@ import { useState, useEffect } from "react";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 
 // import Footer from "./components/Footer";
-import HomePage from "./pages/Home";
+import HomePage from "./pages/Resume";
 import DisplayDataResume from "./pages/DisplayDataResume";
+
+import CoverLetterPage from "./pages/CoverLetter";
 import DisplayDataCV from "./pages/DisplayDataCV";
-import CoverLetter from "./pages/CoverLetter";
+
 import ATSCheckerPage from "./pages/ATSChecker";
+import DisplayDataATS from "./pages/DisplayDataATS";
 // import ATSChecker from "./components/ATSChecker";
 import Navbar from "./components/Navbar/Navbar";
 
@@ -52,7 +55,7 @@ function App() {
           />
           <Route
             path="/cv"
-            element={<CoverLetter DataReceived={setCVData} />}
+            element={<CoverLetterPage DataReceived={setCVData} />}
           />
           <Route
             path="/display-data-cv"
@@ -60,11 +63,11 @@ function App() {
           />
           <Route
             path="/ats"
-            element={<ATSCheckerPage DataReceived={setATSData} />}
+            element={<ATSCheckerPage ATSDataReceived={setATSData} />}
           />
           <Route
-            path="/display-data-ATS"
-            element={<DisplayDataCV data={ATSData} />}
+            path="/display-data-ats"
+            element={<DisplayDataATS data={ATSData} />}
           />
         </Routes>
         {/* <Footer /> */}
