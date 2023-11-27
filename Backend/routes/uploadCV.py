@@ -51,7 +51,8 @@ def init_app(app):
             return jsonify({"error": err}), 500
 
         # Ask a question
-        query = f"Give the Name of the user and also print the text passed: {text}"
+        query = f"Use the resume file and this text {text} to generate a Cover letter"
+        print(f"Query: {query}")
         document_id.append(response_json.get("documents")[0].get("id"))
         print(f"Conversation id : {conversation_id}")
         print(f"Document id: {document_id}")
