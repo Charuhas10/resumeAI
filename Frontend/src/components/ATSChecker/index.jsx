@@ -84,12 +84,15 @@ function ATSChecker({ ATSDataReceived }) {
 
   return (
     <div className="container">
-      <h1>Cover Letter Generator</h1>
-      <p>Writing a cover letter has never been so easy.</p>
+      <h1>ATS Checker</h1>
+      <p>Check your Resume and its compatability with the JD </p>
       <p>
-        With the ResumeHub cover letter tool, you dont have to worry about the
-        hard and confusing parts of writing a cover letter. Now, you can quickly
-        make a great cover letter and get the job you dream of!
+        With the ResumeHub ATS checker, you dont have to worry about your resume
+        getting rejected by the ATS. Just upload your resume and the JD and get
+        the similarity score. The higher the score, the better the chances of
+        your resume getting selected. Dont worry if your score is low, we have
+        got you covered. Just create a resume using our resume builder and get
+        the highest score possible.
       </p>
       {loading ? (
         <Loader />

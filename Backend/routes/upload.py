@@ -11,6 +11,138 @@ app = Flask(__name__)
 
 conversation_id = ""
 document_id = []
+query = """
+From the provided resume PDF file extract details in a structured JSON format. 
+The output should include three key sections: Candidate Overview, Key Details, and Important Questions. 
+Candidate Overview: Summarize the candidate's profile, focusing on career aspirations or a professional summary. 
+This should give a concise but comprehensive view of the candidate's professional identity and goals.
+Key Details: This section should be divided into subsections for Name, Email, Phone Number, Education (with dates and institutions), 
+Experience (with job titles, companies, and duration), Skills (categorized if applicable), Projects (brief descriptions and roles played), 
+Honors and Awards (with dates and awarding bodies). Each subsection should provide clear and precise information.
+10 Important Questions: Based on the resume content, generate 10 relevant questions for an interview or further assessment. 
+These questions should delve into the candidate's experience, skills, and accomplishments, aiming to elicit detailed responses about their professional 
+journey and competencies.
+Example Output:
+Candidate overview:
+The candidate, [NAME], is a [FIELD OF STUDY] student at [COLLEGE NAME]. With a GPA of [CGPA],
+he has shown academic excellence, listed on the Dean's List for specific semesters. [NAME]'s experience includes a 
+Developer Intern role at [COMPANY], working on [PROJECT]. He has skills in [SKILL SET] and experience with [TECHNOLOGIES]. 
+Additionally, [NAME] has roles like Teaching Assistant and has received honors like [AWARDS].
+
+Key details:
+- Name: [NAME]
+- Contact: [PHONE NUMBER], [EMAIL]
+- Education: [DEGREE] in [FIELD] from [COLLEGE] ([DATES])
+- Experience: [JOB TITLE] at [COMPANY] ([DURATION])
+- Projects: [PROJECT NAMES]
+- Skills: [SKILL SET]
+- Honors: [AWARDS and HONORS]
+
+Important questions:
+1. [QUESTION 1]
+2. [QUESTION 2]
+...
+10. [QUESTION 10]
+
+return the answer in the following JSON format:
+{
+  "candidate_overview": "",
+  "key_details": {
+    "Name": "",
+    "Contact": "",
+    "Education": [
+      {
+        "Degree": "",
+        "Institution": "",
+        "Duration": ""
+      },
+      {
+        "Degree": "",
+        "Field": "",
+        "Institution": "",
+        "Percentage": "",
+        "Duration": ""
+      },
+      {
+        "Degree": "",
+        "Field": "",
+        "Institution": "",
+        "CGPA": "",
+        "Duration": ""
+      }
+    ],
+    "Experience": [
+      {
+        "Job Title": "",
+        "Company": "",
+        "Duration": ""
+      },
+      {
+        "Job Title": "",
+        "Company": "",
+        "Duration": ""
+      },
+      {
+        "Job Title": "",
+        "Company": "",
+        "Duration": ""
+      }
+    ],
+    "Projects": [
+      {
+        "Project Name": "",
+        "Technologies": "",
+        "Description": ""
+      },
+      {
+        "Project Name": "",
+        "Technologies": "",
+        "Description": ""
+      }
+    ],
+    "Skills": {
+        "C/C++"
+        "HTML",
+        "CSS",
+        "SCSS",
+        "JavaScript/TypeScript"
+        "MySQL",
+        "Java",
+        "Python",
+        "React",
+        "Node",
+        "Express",
+        "MongoDB",
+        "Git",
+        "GitHub",
+        "Bootstrap",
+        "Material-UI",
+        "Tailwind CSS",
+        "RESTful APIs",
+        "Figma",
+        "AdobXD",
+        "Postman",
+        "AWS",
+        "Visual Studio"
+    },
+    "Honors and Awards": [
+      {
+        "Award": "",
+        "Body": ""
+      },
+      {
+        "Award": "",
+        "Body": ""
+      },
+      {
+        "Award": "",
+        "Body": ""
+      }
+    ]
+  },
+  "important_questions": [<Important Questions>]
+}
+"""
 
 
 def init_app(app):
@@ -46,7 +178,7 @@ def init_app(app):
             return jsonify({"error": err}), 500
 
         # Ask a question
-        query = "Process the provided resume PDF file and extract the following details in a structured JSON format: Candidate Overview: Summarize the candidate's profile, highlighting career aspirations or professional summary. Key Details: Include sections for Name, Email, Phone Number, Education (with dates and institutions), Experience (with job titles, companies, and duration), Skills (categorized if applicable), Projects (brief descriptions and roles played), Honors and Awards (with dates and awarding bodies).10 Important Questions: Based on the resume content, generate 10 insightful questions that would be relevant for an interview or further assessment of the candidate. These questions should pertain to the candidate's experience, skills, and accomplishments, aiming to elicit detailed responses about their professional journey and competencies."
+        # query =
         document_id.append(response_json.get("documents")[0].get("id"))
         print(f"Conversation id : {conversation_id}")
         print(f"Document id: {document_id}")
