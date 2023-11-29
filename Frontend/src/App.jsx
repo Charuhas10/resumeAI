@@ -65,10 +65,10 @@ function App() {
             path="/ats"
             element={<ATSCheckerPage ATSDataReceived={setATSData} />}
           />
-          <Route
+          {/* <Route
             path="/display-data-ats"
             element={<DisplayDataATS data={ATSData} />}
-          />
+          /> */}
         </Routes>
         {/* <Footer /> */}
       </div>

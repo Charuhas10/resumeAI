@@ -12,13 +12,12 @@ function ATSChecker({ ATSDataReceived }) {
   const [loading, setLoading] = useState(false);
   const [file, setFile] = useState(null);
   const [text, setText] = useState("");
-  const navigate = useNavigate();
+  const [responseData, setResponseData] = useState(null);
+  // const navigate = useNavigate();
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
     setFile(selectedFile);
-    // handleSubmit(file);
-    // fetchData();
   };
 
   const handleTextChange = (event) => {
@@ -34,7 +33,6 @@ function ATSChecker({ ATSDataReceived }) {
     if (event.dataTransfer.items && event.dataTransfer.items[0]) {
       const selectedFile = event.dataTransfer.items[0].getAsFile();
       setFile(selectedFile);
-      // handleSubmit(file);
     }
   };
 
@@ -73,13 +71,23 @@ function ATSChecker({ ATSDataReceived }) {
       console.log("SimilarityScore ", data);
       sessionStorage.setItem("ATSData", JSON.stringify(data));
       console.log("3. i came till here");
+      setResponseData(data);
       ATSDataReceived(data);
-      navigate("/display-data-ats");
+      // navigate("/display-data-ats");
     } catch (error) {
       console.error("There was an error fetching the data:", error);
     } finally {
       setLoading(false); // Stop loading
     }
+  };
+
+  const DisplayData = () => {
+    return (
+      <div>
+        <div>Similarity Score: {responseData.similarity}</div>
+        {/* You can add more data display here as needed */}
+      </div>
+    );
   };
 
   return (
@@ -96,6 +104,8 @@ function ATSChecker({ ATSDataReceived }) {
       </p>
       {loading ? (
         <Loader />
+      ) : responseData ? (
+        <DisplayData />
       ) : (
         <form onDragOver={handleDragOver} onDrop={handleDrop}>
           <Row>

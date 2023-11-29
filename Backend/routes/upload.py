@@ -100,47 +100,20 @@ return the answer in the following JSON format:
         "Description": ""
       }
     ],
-    "Skills": {
-        "C/C++"
-        "HTML",
-        "CSS",
-        "SCSS",
-        "JavaScript/TypeScript"
-        "MySQL",
-        "Java",
-        "Python",
-        "React",
-        "Node",
-        "Express",
-        "MongoDB",
-        "Git",
-        "GitHub",
-        "Bootstrap",
-        "Material-UI",
-        "Tailwind CSS",
-        "RESTful APIs",
-        "Figma",
-        "AdobXD",
-        "Postman",
-        "AWS",
-        "Visual Studio"
-    },
+    "Skills": {},
     "Honors and Awards": [
       {
         "Award": "",
-        "Body": ""
       },
       {
         "Award": "",
-        "Body": ""
       },
       {
         "Award": "",
-        "Body": ""
       }
     ]
   },
-  "important_questions": [<Important Questions>]
+  "important_questions": [<Important Technical and experiential Questions>]
 }
 """
 
