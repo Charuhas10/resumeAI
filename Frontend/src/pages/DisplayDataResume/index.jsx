@@ -9,6 +9,7 @@ export default function DisplayDataResume({ data }) {
   console.log(resumeData);
   const candidateOverview = resumeData.candidate_overview;
   const keyDetails = resumeData.key_details;
+  const keyDetails_HonorsAndAwards = keyDetails["Honors and Awards"] || [];
 
   return (
     <div>
@@ -21,6 +22,7 @@ export default function DisplayDataResume({ data }) {
           {keyDetails.Education.map((edu, index) => (
             <div key={index}>
               <div>Degree: {edu.Degree}</div>
+              {edu.Field && <div>Field: {edu.Field}</div>}
               <div>Institution: {edu.Institution}</div>
               <div>Duration: {edu.Duration}</div>
               {edu.Percentage && <div>Percentage: {edu.Percentage}</div>}
@@ -63,27 +65,29 @@ export default function DisplayDataResume({ data }) {
           </ul>
         </div>
       )}
-      {keyDetails["Honors and Awards"] && keyDetails["Honors and Awards"].length > 0 && (
-        <div>
-          <h2>Honors and Awards:</h2>
-          {keyDetails["Honors and Awards"].map((award, index) => (
-            <div key={index}>
-              <div>Award: {award.Award}</div>
-              <div>Body: {award.Body}</div>
-            </div>
-          ))}
-        </div>
-      )}
-      {resumeData.important_questions && resumeData.important_questions.length > 0 && (
-        <div>
-          <h2>Important Questions:</h2>
-          <ul>
-            {resumeData.important_questions.map((question, index) => (
-              <li key={index}>{question}</li>
+      {keyDetails["Honors and Awards"] &&
+        keyDetails["Honors and Awards"].length > 0 && (
+          <div>
+            <h2>Honors and Awards:</h2>
+            {keyDetails_HonorsAndAwards.map((award, index) => (
+              <div key={index}>
+                <div>Award: {award.Award}</div>
+                {award.Body && <div>Body: {award.Body}</div>}
+              </div>
             ))}
-          </ul>
-        </div>
-      )}
+          </div>
+        )}
+      {resumeData.important_questions &&
+        resumeData.important_questions.length > 0 && (
+          <div>
+            <h2>Important Questions:</h2>
+            <ul>
+              {resumeData.important_questions.map((question, index) => (
+                <li key={index}>{question}</li>
+              ))}
+            </ul>
+          </div>
+        )}
     </div>
   );
 }

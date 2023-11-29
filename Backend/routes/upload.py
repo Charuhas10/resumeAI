@@ -16,9 +16,9 @@ From the provided resume PDF file extract details in a structured JSON format.
 The output should include three key sections: Candidate Overview, Key Details, and Important Questions. 
 Candidate Overview: Summarize the candidate's profile, focusing on career aspirations or a professional summary. 
 This should give a concise but comprehensive view of the candidate's professional identity and goals.
-Key Details: This section should be divided into subsections for Name, Email, Phone Number, Education (with dates and institutions), 
-Experience (with job titles, companies, and duration), Skills (categorized if applicable), Projects (brief descriptions and roles played), 
-Honors and Awards (with dates and awarding bodies). Each subsection should provide clear and precise information.
+Key Details: This section should be divided into subsections for Name, Email, Phone Number, Education (with dates, grades and institutions), 
+Experience (with job titles, companies, and duration), Skills (categorized if applicable), Projects (brief descriptions and roles played).
+Each subsection should provide clear and precise information.
 10 Important Questions: Based on the resume content, generate 10 relevant questions for an interview or further assessment. 
 These questions should delve into the candidate's experience, skills, and accomplishments, aiming to elicit detailed responses about their professional 
 journey and competencies.
@@ -94,23 +94,12 @@ return the answer in the following JSON format:
         "Technologies": "",
         "Description": ""
       },
-      {
-        "Project Name": "",
-        "Technologies": "",
-        "Description": ""
-      }
     ],
     "Skills": {},
     "Honors and Awards": [
       {
         "Award": "",
       },
-      {
-        "Award": "",
-      },
-      {
-        "Award": "",
-      }
     ]
   },
   "important_questions": [<Important Technical and experiential Questions>]
