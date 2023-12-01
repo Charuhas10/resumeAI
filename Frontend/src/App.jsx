@@ -10,6 +10,7 @@ import CoverLetterPage from "./pages/CoverLetter";
 import DisplayDataCV from "./pages/DisplayDataCV";
 
 import ATSCheckerPage from "./pages/ATSChecker";
+import ResumeBuilderPage from "./pages/ResumeBuilder";
 import DisplayDataATS from "./pages/DisplayDataATS";
 // import ATSChecker from "./components/ATSChecker";
 import Navbar from "./components/Navbar/Navbar";
@@ -69,6 +70,7 @@ function App() {
             path="/display-data-ats"
             element={<DisplayDataATS data={ATSData} />}
           /> */}
+          <Route path="/resume-builder" element={<ResumeBuilderPage />} />
         </Routes>
         {/* <Footer /> */}
       </div>

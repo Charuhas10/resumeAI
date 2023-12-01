@@ -15,6 +15,6 @@ npm run dev
 ```bash
 cd backend
 source env/Scripts/activate
-pip install -r requirements.txt]
+pip install -r requirements.txt
 python app.py
 ```
