@@ -1,0 +1,17 @@
+.Style {
+  width: 35%;
+  max-height: calc(100vh - 72px);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.Collapsible {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.InnerCollapsible {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}

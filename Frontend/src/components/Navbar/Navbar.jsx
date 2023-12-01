@@ -38,7 +38,7 @@ function Navbar() {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <a className="nav-link" href="/resume-builder">
                 Resume Builder
               </a>
             </li>
