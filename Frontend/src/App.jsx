@@ -14,6 +14,7 @@ import ResumeBuilderPage from "./pages/ResumeBuilder";
 import DisplayDataATS from "./pages/DisplayDataATS";
 // import ATSChecker from "./components/ATSChecker";
 import Navbar from "./components/Navbar/Navbar";
+import WelcomePage from "./pages/WelcomePage";
 
 function App() {
   const [resumeData, setResumeData] = useState(
@@ -46,6 +47,7 @@ function App() {
         {/* <h1 style={{ textAlign: "center" }}>ResumeAI</h1> */}
         <Navbar />
         <Routes>
+          <Route path="/welcome-page" element={<WelcomePage />} />
           <Route
             path="/"
             element={<HomePage onDataReceived={setResumeData} />}

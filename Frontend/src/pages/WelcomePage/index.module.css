@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.welcomeImage {
+  width: 45%;
+  height: auto;
+  /* margin-bottom: 20px; Space between the image and the button */
+}
+
+.getStartedButton {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #3a8891; /* Adjust button color as needed */
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+}
+
+.getStartedButton:hover {
+  background-color: #0e5e6f; /* Darker shade for hover effect */
+}
+
+.line {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}

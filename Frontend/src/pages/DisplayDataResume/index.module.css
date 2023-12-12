@@ -1,0 +1,30 @@
+.responseContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align content to the start (top) */
+  align-items: flex-start; /* Align items to the left */
+  padding: 20px;
+  box-sizing: border-box;
+  border: 2px solid #3a8891;
+  border-radius: 15px;
+  background-color: #f9f7f7;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 1000px;
+  margin: auto;
+  width: 100%;
+}
+
+.contentSection {
+  margin-bottom: 20px;
+  text-align: left; /* Ensure text is left-aligned */
+}
+
+.responseContainer h1,
+.responseContainer h2 {
+  text-align: left; /* Align headings to the left */
+  font-size: 1.75rem; /* Adjust font size for h1 */
+}
+
+.responseContainer h2 {
+  font-size: 1.5rem; /* Adjust font size for h2 */
+}
