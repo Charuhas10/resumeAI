@@ -1,17 +1,19 @@
 import styles from "./index.module.css";
 import Loader from "../Loader/";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUpload, faFile } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function ResumeUpload({ onDataReceived }) {
   const [loading, setLoading] = useState(false);
+  const [file, setFile] = useState(null);
   const navigate = useNavigate();
 
   const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    handleSubmit(file);
-    fetchData();
+    const selectedFile = event.target.files[0];
+    setFile(selectedFile);
+    handleSubmit(selectedFile);
   };
 
   const handleDragOver = (event) => {
@@ -21,32 +23,23 @@ function ResumeUpload({ onDataReceived }) {
   const handleDrop = (event) => {
     event.preventDefault();
     if (event.dataTransfer.items && event.dataTransfer.items[0]) {
-      const file = event.dataTransfer.items[0].getAsFile();
-      handleSubmit(file);
+      const selectedFile = event.dataTransfer.items[0].getAsFile();
+      setFile(selectedFile);
+      handleSubmit(selectedFile);
     }
   };
 
-  const handleSubmit = (file) => {
-    if (file) {
-      console.log("File selected: ", file.name);
-      parseData(file);
+  const handleSubmit = async (selectedFile) => {
+    if (selectedFile) {
+      console.log("File selected: ", selectedFile.name);
+      parseData(selectedFile);
     } else {
       console.log("No file selected");
     }
   };
 
-  const fetchData = async () => {
-    try {
-      const response = await fetch("http://localhost:5000/");
-      const data = await response.json();
-      console.log(data.message); // Should log: "Hello from Flask!"
-    } catch (error) {
-      console.error("There was an error fetching the data:", error);
-    }
-  };
-
   const parseData = async (file) => {
-    setLoading(true); // Start loading
+    setLoading(true);
     const formData = new FormData();
     formData.append("file", file);
     try {
@@ -67,27 +60,49 @@ function ResumeUpload({ onDataReceived }) {
     } catch (error) {
       console.error("There was an error fetching the data:", error);
     } finally {
-      setLoading(false); // Stop loading
+      setLoading(false);
     }
   };
 
   return (
-    <div>
+    <div className={styles.container}>
+      <h1>Resume Scanner</h1>
+      <p className={styles.lineOne}>
+        Scan your resume for a perfect match with the job description.
+      </p>
+      <p className={styles.lineTwo}>
+        You can forget the hassle of manually checking your resume against job
+        requirements. <br /> Now, easily ensure your resume aligns perfectly
+        with your dream job.
+      </p>
       {loading ? (
-        <Loader />
+        <div className={styles.loaderContainer}>
+          <Loader />
+        </div>
       ) : (
-        <form onDragOver={handleDragOver} onDrop={handleDrop}>
-          <label className={styles.UploadBox}>
-            <input
-              type="file"
-              onChange={handleFileChange}
-              accept=".pdf"
-              name="file"
-              className={styles.Picker}
-            />
-            Click to Upload or Drag and Drop
-          </label>
-        </form>
+        <div className={styles.formContainer}>
+          <form onDragOver={handleDragOver} onDrop={handleDrop}>
+            <label className={styles.UploadBox}>
+              <input
+                type="file"
+                onChange={handleFileChange}
+                accept=".pdf"
+                name="file"
+                className={styles.Picker}
+              />
+              <div className={styles.uploadboxel}>
+                <div>
+                  {file ? (
+                    <FontAwesomeIcon icon={faFile} />
+                  ) : (
+                    <FontAwesomeIcon icon={faUpload} />
+                  )}
+                </div>
+                <p>{file ? file.name : "Click to Upload or Drag and Drop"}</p>
+              </div>
+            </label>
+          </form>
+        </div>
       )}
     </div>
   );

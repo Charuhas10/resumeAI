@@ -1,7 +1,10 @@
+import React, { useEffect } from "react";
 import styles from "./index.module.css";
 import Loader from "../Loader/";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Row, Col } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUpload, faFile } from "@fortawesome/free-solid-svg-icons";
 // import Button from "react-bootstrap/Button";
 // Use <Button> in your component
 
@@ -14,6 +17,17 @@ function ATSChecker({ ATSDataReceived }) {
   const [text, setText] = useState("");
   const [responseData, setResponseData] = useState(null);
   // const navigate = useNavigate();
+  useEffect(() => {
+    if (responseData) {
+      const circle = document.querySelector(".similarityRing circle");
+      if (circle) {
+        const circumference = 2 * Math.PI * 90;
+        setTimeout(() => {
+          circle.style.strokeDashoffset = 0;
+        }, 100); // Adjust the delay as needed
+      }
+    }
+  }, [responseData]);
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
@@ -80,12 +94,38 @@ function ATSChecker({ ATSDataReceived }) {
       setLoading(false); // Stop loading
     }
   };
-
+  const getRingColor = (similarity) => {
+    if (similarity <= 30) return "#FF0000"; // Red
+    if (similarity <= 50) return "#FFA500"; // Orange
+    if (similarity <= 70) return "#FFFF00"; // Yellow
+    if (similarity <= 85) return "#00FF00"; // Light Green
+    return "#008000"; // Dark Green
+  };
   const DisplayData = () => {
+    const ringColor = getRingColor(responseData.similarity);
+
     return (
-      <div>
-        <div>Similarity Score: {responseData.similarity}</div>
-        {/* You can add more data display here as needed */}
+      <div className={styles.similarityContainer}>
+        <svg className={styles.similarityRing} viewBox="0 0 200 200">
+          <circle
+            cx="100"
+            cy="100"
+            r="90"
+            stroke={ringColor}
+            strokeWidth="10"
+            fill="transparent"
+            className={styles.animateCircle}
+          />
+          <text
+            x="50%"
+            y="50%"
+            textAnchor="middle"
+            dy=".3em"
+            className={styles.similarityScore}
+          >
+            {responseData.similarity}%
+          </text>
+        </svg>
       </div>
     );
   };
@@ -93,17 +133,18 @@ function ATSChecker({ ATSDataReceived }) {
   return (
     <div className="container">
       <h1>ATS Checker</h1>
-      <p>Check your Resume and its compatability with the JD </p>
-      <p>
-        With the ResumeHub ATS checker, you dont have to worry about your resume
-        getting rejected by the ATS. Just upload your resume and the JD and get
-        the similarity score. The higher the score, the better the chances of
-        your resume getting selected. Dont worry if your score is low, we have
-        got you covered. Just create a resume using our resume builder and get
-        the highest score possible.
+      <p className={styles.lineOne}>
+        Make sure your resume fits the job description with our ATS Checker.
+      </p>
+      <p className={styles.lineTwo}>
+        Simplify your ATS resume optimization with ResumeHub's tool. <br />
+        Say goodbye to complexity and uncertainty; quickly enhance your resume
+        for better job prospects!
       </p>
       {loading ? (
-        <Loader />
+        <div className={styles.loaderContainer}>
+          <Loader />
+        </div>
       ) : responseData ? (
         <DisplayData />
       ) : (
@@ -111,7 +152,7 @@ function ATSChecker({ ATSDataReceived }) {
           <Row>
             <Col
               md={6}
-              className="d-flex justify-content-center align-items-center"
+              className="d-flex justify-content-center align-items-center px-4 py-4"
             >
               <label className={styles.UploadBox}>
                 <input
@@ -123,40 +164,13 @@ function ATSChecker({ ATSDataReceived }) {
                 />
                 <div className={styles.uploadboxel}>
                   <div>
-                    <svg
-                      width="32px"
-                      height="32px"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                      <g
-                        id="SVGRepo_tracerCarrier"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      ></g>
-                      <g id="SVGRepo_iconCarrier">
-                        {" "}
-                        <path
-                          d="M15 21H9C6.17157 21 4.75736 21 3.87868 20.1213C3 19.2426 3 17.8284 3 15M21 15C21 17.8284 21 19.2426 20.1213 20.1213C19.8215 20.4211 19.4594 20.6186 19 20.7487"
-                          stroke="#000000"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        ></path>{" "}
-                        <path
-                          d="M12 16V3M12 3L16 7.375M12 3L8 7.375"
-                          stroke="#000000"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        ></path>{" "}
-                      </g>
-                    </svg>
+                    {file ? (
+                      <FontAwesomeIcon icon={faFile} />
+                    ) : (
+                      <FontAwesomeIcon icon={faUpload} />
+                    )}
                   </div>
-
-                  <p>Click to Upload or Drag and Drop</p>
+                  <p>{file ? file.name : "Click to Upload or Drag and Drop"}</p>
                 </div>
               </label>
             </Col>
@@ -167,8 +181,8 @@ function ATSChecker({ ATSDataReceived }) {
               <textarea
                 className={styles.TextArea}
                 placeholder="Enter Job Description"
-                value={text} // The text state variable
-                onChange={handleTextChange} // Function to update the text state
+                value={text}
+                onChange={handleTextChange}
               />
             </Col>
           </Row>

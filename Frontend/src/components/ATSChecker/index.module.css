@@ -1,13 +1,14 @@
-body {
+/* body {
   background-color: #fff5e0;
   font-family: "Inter", sans-serif;
-}
+} */
 
 h1 {
-  color: aqua;
+  color: #000; /* or any other color as per CoverLetterUpload */
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 2.8rem;
 }
 p {
   display: block;
@@ -15,6 +16,15 @@ p {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+}
+.lineOne {
+  color: #3a8891;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+.lineTwo {
+  margin: 2rem;
+  font-weight: 400;
 }
 svg {
   margin: 10px;
@@ -26,11 +36,23 @@ svg {
   border: none;
   border-radius: 5px;
   padding: 1rem;
+  background-color: #f9f7f7;
 }
+.TextArea:focus {
+  outline: none !important;
+  border: 1px solid #a8a8a8;
+}
+.SubmitButton {
+  background-color: #3a8891 !important;
+  border: #3a8891 !important;
+  border-radius: 10px !important;
+}
+
 .UploadBox {
   border: 1px dashed #a8a8a8;
+  color: #a8a8a8;
   border-radius: 5px;
-  background-color: #fff;
+  background-color: #f9f7f7;
   padding: 30px;
   width: 275px;
   height: 350px;
@@ -59,4 +81,47 @@ svg {
 
 .Picker::-webkit-file-upload-button {
   visibility: hidden;
+}
+.loaderContainer {
+  position: fixed; /* Changed from 'absolute' to 'fixed' */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+@keyframes drawCircle {
+  from {
+    stroke-dasharray: 0 565.48; /* Start from no circle */
+  }
+  to {
+    stroke-dasharray: 565.48 0; /* End with full circle */
+  }
+}
+
+.similarityContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.similarityRing {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 10px;
+}
+
+.animateCircle {
+  stroke-dasharray: 565.48; /* Circumference of the circle */
+  animation: drawCircle 1s ease-out forwards;
+}
+
+.similarityScore {
+  fill: #000; /* Text color */
+  font-size: 30px; /* Adjust size as needed */
 }
