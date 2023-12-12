@@ -1,13 +1,13 @@
 // NavbarComponent.jsx
-import React from "react";
 import styles from "./index.module.css";
+import logo from "../../images/ResumeHub_Dark.jpg";
 
 function Navbar() {
   return (
     <nav className={`navbar navbar-expand-lg ${styles.navLinksContainer}`}>
       <div className="container">
         <a className="navbar-brand" href="/">
-          ResumeHub
+          <img src={logo} alt="" />
         </a>
         <button
           className="navbar-toggler"

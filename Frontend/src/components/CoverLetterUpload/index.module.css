@@ -1,13 +1,14 @@
-body {
+/* body {
   background-color: #fff5e0;
   font-family: "Inter", sans-serif;
-}
+} */
 
 h1 {
-  color: #141e46 !important;
+  color: #000 !important;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 2.8rem !important;
 }
 p {
   display: block;
@@ -17,7 +18,13 @@ p {
   flex-wrap: wrap;
 }
 .lineOne {
-  color: #c70039;
+  color: #3a8891;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+.lineTwo {
+  margin: 2rem;
+  font-weight: 400;
 }
 svg {
   margin: 10px;
@@ -30,20 +37,22 @@ svg {
   border: none;
   border-radius: 5px;
   padding: 1rem;
+  background-color: #f9f7f7;
 }
 .TextArea:focus {
   outline: none !important;
   border: 1px solid #a8a8a8;
 }
 .SubmitButton {
-  background-color: #ff6969 !important;
-  border: #ff6969 !important;
+  background-color: #3a8891 !important;
+  border: #3a8891 !important;
+  border-radius: 10px !important;
 }
 .UploadBox {
   border: 1px dashed #a8a8a8;
   color: #a8a8a8;
   border-radius: 5px;
-  background-color: #fff;
+  background-color: #f9f7f7;
   padding: 30px;
   width: 275px;
   height: 350px;

@@ -85,10 +85,10 @@ function CoverLetterUpload({ DataReceived }) {
       <p className={styles.lineOne}>
         Writing a cover letter has never been so easy.
       </p>
-      <p>
+      <p className={styles.lineTwo}>
         With the ResumeHub cover letter tool, you dont have to worry about the
-        hard and confusing parts of writing a cover letter. Now, you can quickly
-        make a great cover letter and get the job you dream of!
+        hard and confusing parts of writing a cover letter. <br /> Now, you can
+        quickly make a great cover letter and get the job you dream of!
       </p>
       {loading ? (
         <Loader />
@@ -97,7 +97,7 @@ function CoverLetterUpload({ DataReceived }) {
           <Row>
             <Col
               md={6}
-              className="d-flex justify-content-center align-items-center"
+              className="d-flex justify-content-center align-items-center px-4 py-4"
             >
               <label className={styles.UploadBox}>
                 <input
@@ -126,14 +126,14 @@ function CoverLetterUpload({ DataReceived }) {
                         {" "}
                         <path
                           d="M15 21H9C6.17157 21 4.75736 21 3.87868 20.1213C3 19.2426 3 17.8284 3 15M21 15C21 17.8284 21 19.2426 20.1213 20.1213C19.8215 20.4211 19.4594 20.6186 19 20.7487"
-                          stroke="#000000"
+                          stroke="#a8a8a8"
                           strokeWidth="1.5"
                           strokeLinecap="round"
                           strokeLinejoin="round"
                         ></path>{" "}
                         <path
                           d="M12 16V3M12 3L16 7.375M12 3L8 7.375"
-                          stroke="#000000"
+                          stroke="#a8a8a8"
                           strokeWidth="1.5"
                           strokeLinecap="round"
                           strokeLinejoin="round"
@@ -161,7 +161,7 @@ function CoverLetterUpload({ DataReceived }) {
           {/* <div className={styles.formContainer}> */}
           {/* </div> */}
 
-          <div className="d-flex justify-content-center">
+          <div className="d-flex justify-content-center px-1 py-1">
             <button
               type="button"
               onClick={() => handleSubmit(file, text)}

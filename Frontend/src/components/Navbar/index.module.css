@@ -3,3 +3,9 @@
   color: #141e46 !important; /* Replace with your desired color */
   padding: 1rem !important;
 }
+nav {
+  margin: 1rem;
+}
+img {
+  width: 12rem;
+}
