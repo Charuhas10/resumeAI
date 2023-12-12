@@ -30,8 +30,8 @@ export const emptyResumeArray: {
   Experience: {
     Name: "",
     Title: "",
-    Location: "",
     Description: "",
+    Location: "",
     StartDate: "",
     EndDate: "",
   },
@@ -39,8 +39,8 @@ export const emptyResumeArray: {
   Projects: {
     Name: "",
     Technologies: "",
-    Link: "",
     Description: "",
+    Link: "",
   },
   Certifications: {
     Name: "",

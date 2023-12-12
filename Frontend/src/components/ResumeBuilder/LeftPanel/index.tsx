@@ -1,19 +1,46 @@
 import React, { useState } from "react";
-import { produce } from "immer";
 
 import Input from "../Input";
 import Collapsible from "../Collapsible";
 
 import styles from "./index.module.css";
-import { Resume, ResumeArray, ResumeFlat } from "../../data/resume";
-import type { ResumeActions } from "../../data/actions";
+import { Resume, ResumeArray, ResumeFlat } from "../../../data/resume";
+import type { ResumeActions } from "../../../data/actions";
 
 function LeftPanel(props: {
   resume: Resume;
   dispatch: React.Dispatch<ResumeActions>;
 }) {
+  const [textAreaContent, setTextAreaContent] = useState("");
+  // const [resumeContent, setResumeContent] = useState("");
+
+  const handleMakeResume = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/process_text", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ textAreaContent }),
+      });
+      const data = await response.json();
+      props.dispatch({ name: "merge", value: data });
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   return (
     <div className={styles.Style}>
+      <div className={styles.TextAreaDiv}>
+        <textarea
+          cols={10}
+          rows={10}
+          value={textAreaContent}
+          onChange={(e) => setTextAreaContent(e.target.value)}
+        ></textarea>
+        <button onClick={handleMakeResume}>Make Resume</button>
+      </div>
       {Object.entries(props.resume).map(([key, value]) =>
         !Array.isArray(value) ? (
           <Collapsible name={key} key={key} className={styles.Collapsible}>

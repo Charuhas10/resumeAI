@@ -30,7 +30,7 @@ svg {
   margin: 10px;
   color: #a8a8a8;
 }
-textarea {
+.TextArea {
   width: 400px;
   min-height: 350px;
   max-height: 350px;
@@ -39,8 +39,9 @@ textarea {
   padding: 1rem;
   background-color: #f9f7f7;
 }
-textarea:focus {
-  outline: none;
+.TextArea:focus {
+  outline: none !important;
+  border: 1px solid #a8a8a8;
 }
 .SubmitButton {
   background-color: #3a8891 !important;
