@@ -19,7 +19,7 @@ p {
 svg {
   margin: 10px;
 }
-textarea {
+.TextArea {
   width: 400px;
   min-height: 350px;
   max-height: 350px;

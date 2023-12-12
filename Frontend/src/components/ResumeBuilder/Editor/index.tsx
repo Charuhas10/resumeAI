@@ -39,6 +39,9 @@ export const Editor = (props: { signal: number }) => {
             obj[action.value.index][action.value.key] = action.value.value;
           }
           break;
+
+        case "merge":
+          return { ...draft, ...action.value };
       }
     },
     emptyResume
