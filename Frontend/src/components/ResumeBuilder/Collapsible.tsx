@@ -4,12 +4,14 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 const box_style = {
   minHeight: "8vh",
   width: "100%",
-  backgroundColor: "black",
-  color: "white",
+  backgroundColor: "#f9f7f7",
+  color: "#000",
   display: "flex",
   flexDirection: "row",
   justifyContent: "center",
   alignItems: "center",
+  borderRadius: "10px",
+  margin: "10px 0px",
 };
 
 const innerBox_style = {
@@ -20,7 +22,7 @@ const innerBox_style = {
 };
 
 const icon_style = {
-  color: "white",
+  color: "#000",
   fontSize: "extra-large",
   cursor: "pointer",
   transition: "transform 0.5s ease",

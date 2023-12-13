@@ -34,12 +34,20 @@ function LeftPanel(props: {
     <div className={styles.Style}>
       <div className={styles.TextAreaDiv}>
         <textarea
+          className={styles.Text}
           cols={10}
           rows={10}
           value={textAreaContent}
           onChange={(e) => setTextAreaContent(e.target.value)}
         ></textarea>
-        <button onClick={handleMakeResume}>Make Resume</button>
+        <div className={styles.ButtonContainer}>
+          <button
+            className={styles.MakeResumeButton}
+            onClick={handleMakeResume}
+          >
+            Make Resume
+          </button>
+        </div>
       </div>
       {Object.entries(props.resume).map(([key, value]) =>
         !Array.isArray(value) ? (
@@ -96,6 +104,7 @@ function InputsGroup<Type = "mutate" | "mutate-array">({
             key={i}
           />
           <button
+            className={styles.DeleteButton}
             onClick={() =>
               dispatch({
                 name: "delete",
@@ -108,6 +117,7 @@ function InputsGroup<Type = "mutate" | "mutate-array">({
         </Collapsible>
       ))}
       <button
+        className={styles.AddButton}
         onClick={() =>
           dispatch({
             name: "add",

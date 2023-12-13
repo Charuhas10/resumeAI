@@ -13,8 +13,19 @@ const App_style = {
 const headerStyle = {
   display: "flex",
   flexDirection: "row",
-  justifyContent: "space-between",
+  justifyContent: "center",
   margin: "20px",
+};
+
+// New style for the button
+const buttonStyle = {
+  padding: "5px 10px", // Smaller size
+  alignSelf: "flex-end", // Align to the right side
+  marginRight: "20px", // Margin on the right for some spacing
+  backgroundColor: "#3a8891",
+  border: "#3a8891",
+  borderRadius: "10px",
+  color: "white",
 };
 
 function ResumeBuilder() {
@@ -24,8 +35,10 @@ function ResumeBuilder() {
     <div className="App" style={App_style}>
       <header style={headerStyle}>
         <h1>Resume Builder</h1>
-        <button onClick={() => setSignal(signal + 1)}>Print</button>
       </header>
+      <button style={buttonStyle} onClick={() => setSignal(signal + 1)}>
+        Print
+      </button>
       <Editor signal={signal} />
     </div>
   );

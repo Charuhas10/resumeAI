@@ -1,7 +1,7 @@
 import requests, time
 from typing import Dict, Text, Tuple
 
-API_TOKEN = "5AXo2r4Gd1WC0Mq5MfNb5OeLM7XePM"
+API_TOKEN = "iZqa4USOjYPk81g8sywh5qQPeKcZoq"
 API_BASE_URL = "https://aihub.instabase.com/api/"
 url = API_BASE_URL + "v2/aihub/converse/conversations"
 API_HEADERS = {"Authorization": f"Bearer {API_TOKEN}"}
