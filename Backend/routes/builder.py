@@ -59,7 +59,7 @@ def init_app(app):
       """ 
       user = text_content
   
-      client = openai.Client(api_key="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")
+      client = openai.Client(api_key="XXXXX")
   
       completion = client.chat.completions.create(
           model="gpt-3.5-turbo-1106",

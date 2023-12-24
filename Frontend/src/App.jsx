@@ -47,9 +47,9 @@ function App() {
         {/* <h1 style={{ textAlign: "center" }}>ResumeAI</h1> */}
         <Navbar />
         <Routes>
-          <Route path="/welcome-page" element={<WelcomePage />} />
+          <Route path="/" element={<WelcomePage />} />
           <Route
-            path="/"
+            path="/resume"
             element={<HomePage onDataReceived={setResumeData} />}
           />
           <Route

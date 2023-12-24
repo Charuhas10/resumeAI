@@ -3,6 +3,7 @@ from utils.pdf_utils import pdf  # Make sure this is the correct import path
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import CountVectorizer
+import openai
 
 
 app = Flask(__name__)
@@ -32,5 +33,35 @@ def init_app(app):
             similarity_score = cos_sim[1][0]
             similarity_percentage = round(float(similarity_score), 4) * 100
             print(similarity_percentage)
+            prompt = f"""
+            I will provide you with a Job description text and a resume text. You will give atleast 5 points where the resume can be improved so that the cosine similarity between the resume and the job description increases.
+            pdf_text:{pdf_text} 
+            text_jd: {text_jd}
+            The reponse should be in the following format:
+            "Sugested improvements:
+            1. 
+            2.
+            3.
+            4.
+            5.
+            """  
+            client = openai.Client(api_key="XXXXX")
+  
+            response = client.chat.completions.create(
+                model="gpt-3.5-turbo-1106",
+                messages=[
+                    {"role": "system", "content": "You are a helpful assistant."},
+                    {"role": "user", "content": prompt}
+                ],
+                max_tokens=150
+            )
+
+            improvement_suggestions = response.choices[0].message.content
+            print(improvement_suggestions)
+
             # Return the similarity score to the frontend
-            return jsonify({"similarity": similarity_percentage})
+            response_data = {
+            "similarity": similarity_percentage,
+            "improvements": improvement_suggestions
+            }
+            return jsonify(response_data)

@@ -101,6 +101,21 @@ function ATSChecker({ ATSDataReceived }) {
     if (similarity <= 85) return "#00FF00"; // Light Green
     return "#008000"; // Dark Green
   };
+  // const formatImprovements = (responseData) => {
+  //   if (!responseData || !responseData.improvements) {
+  //     return "";
+  //   }
+
+  //   const lines = responseData.improvements.split(". ");
+  //   if (lines[0].trim() === "Suggested improvements") {
+  //     lines.shift();
+  //   }
+
+  //   const formattedImprovements = lines.map(
+  //     (line, index) => `${index + 1}. ${line.trim()}`
+  //   );
+  //   return formattedImprovements.join("\n");
+  // };
   const DisplayData = () => {
     const ringColor = getRingColor(responseData.similarity);
 
@@ -126,10 +141,10 @@ function ATSChecker({ ATSDataReceived }) {
             {responseData.similarity}%
           </text>
         </svg>
+        {responseData.improvements}
       </div>
     );
   };
-
   return (
     <div className="container">
       <h1>ATS Checker</h1>
