@@ -37,6 +37,7 @@ Run the following commands in the terminal to set up the backend
 
 ```bash
 cd backend
+python -m venv env
 source env/Scripts/activate
 pip install -r requirements.txt
 python app.py
