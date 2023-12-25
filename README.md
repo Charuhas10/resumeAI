@@ -43,6 +43,16 @@ pip install -r requirements.txt
 python app.py
 ```
 
+#### Setting up the OpenAI API
+
+Navigate to `backend/routes/builder.py`, and `backend/routes/uploadATS.py` and replace the API key with your own.
+
+```python
+client = openai.Client(api_key="XXXXX")
+```
+
+replace `XXXXX` with your API key.
+
 ### Setting up the Frontend
 
 Run the following commands in the terminal to set up the frontend
